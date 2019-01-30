@@ -21,7 +21,7 @@ const run = async () => {
     const game = await promptGameSettings();
     header();
     console.log(`Hello ${game.username}!`);
-    const board = createBoard();
+    const board = createBoard(game.width, game.height);
     displayBoard(board);
   } catch (exception) {
     console.log(chalk.red("There was an exception: " + exception));
