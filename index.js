@@ -2,6 +2,7 @@ import chalk from "chalk";
 import clear from "clear";
 import figlet from "figlet";
 import { promptGameSettings } from "./src/inquirer";
+import { createBoard, displayBoard } from "./src/board";
 
 const header = () => {
   clear();
@@ -20,6 +21,8 @@ const run = async () => {
     const game = await promptGameSettings();
     header();
     console.log(`Hello ${game.username}!`);
+    const board = createBoard();
+    displayBoard(board);
   } catch (exception) {
     console.log(chalk.red("There was an exception: " + exception));
   }
