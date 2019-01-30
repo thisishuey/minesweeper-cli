@@ -1,0 +1,10 @@
+{
+  "name": "minesweeper-cli",
+  "version": "1.0.0",
+  "description": "Minesweeper CLI implemented with NodeJS",
+  "main": "index.js",
+  "repository": "git@github.com:thisishuey/minesweeper-cli.git",
+  "author": "Jeff \"Huey\" Huelsbeck <huey@carpetelam.com>",
+  "license": "MIT",
+  "private": false
+}
