@@ -43,3 +43,20 @@ export const promptGameSettings = () =>
       }
     }
   ]);
+
+export const promptNextMove = (username = "Player") =>
+  inquirer.prompt([
+    {
+      name: "move",
+      type: "input",
+      message: "Please enter your next move (e.g. a1)",
+      validate: value => {
+        const regex = new RegExp("^.\\d+$");
+        if (regex.test(value)) {
+          return true;
+        } else {
+          return "Please enter a valid cell (e.g. a1)";
+        }
+      }
+    }
+  ]);
