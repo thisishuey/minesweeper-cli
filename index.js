@@ -6,9 +6,9 @@ import {
   promptNextMove,
   promptEndGame
 } from "./src/inquirer";
-import { createBoard, displayBoard } from "./src/board";
+import { createBoard, displayBoard, updateBoard } from "./src/board";
 
-const header = () => {
+const drawHeader = () => {
   clear();
   console.log(
     chalk.blue(
@@ -19,15 +19,22 @@ const header = () => {
   );
 };
 
+const drawBoard = (settings, board) => {
+  drawHeader();
+  console.log(`Hello ${settings.username}!`);
+  displayBoard(board);
+};
+
 const run = async () => {
   try {
-    header();
-    const game = await promptGameSettings();
-    header();
-    console.log(`Hello ${game.username}!`);
-    const board = createBoard(game.width, game.height);
-    displayBoard(board);
-    const { nextMove } = await promptNextMove();
+    drawHeader();
+    const settings = await promptGameSettings();
+    const board = createBoard(settings.width, settings.height);
+    while (true) {
+      drawBoard(settings, board);
+      const { nextMove } = await promptNextMove();
+      const newBoard = updateBoard(board, nextMove);
+    }
     const { playAgain } = await promptEndGame();
     if (playAgain) {
       run();

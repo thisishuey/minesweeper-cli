@@ -47,7 +47,7 @@ export const promptGameSettings = () =>
 export const promptNextMove = () =>
   inquirer.prompt([
     {
-      name: "move",
+      name: "nextMove",
       type: "input",
       message: "Please enter your next move (e.g. a1)",
       validate: value => {
