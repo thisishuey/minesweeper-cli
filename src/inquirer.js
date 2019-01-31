@@ -44,7 +44,7 @@ export const promptGameSettings = () =>
     }
   ]);
 
-export const promptNextMove = (username = "Player") =>
+export const promptNextMove = () =>
   inquirer.prompt([
     {
       name: "move",
@@ -58,5 +58,14 @@ export const promptNextMove = (username = "Player") =>
           return "Please enter a valid cell (e.g. a1)";
         }
       }
+    }
+  ]);
+
+export const promptEndGame = () =>
+  inquirer.prompt([
+    {
+      name: "playAgain",
+      type: "confirm",
+      message: "Would you like to play again?"
     }
   ]);
