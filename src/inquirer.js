@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import { inRange, isNumber } from "lodash";
 
 const minDimension = 1;
-const maxDimension = 26;
+const maxDimension = 27;
 
 export const promptGameSettings = () =>
   inquirer.prompt([
@@ -23,7 +23,7 @@ export const promptGameSettings = () =>
       type: "number",
       message: `Enter a width between ${minDimension} and ${maxDimension}`,
       validate: value => {
-        if (isNumber(value) && inRange(value, 1, 26)) {
+        if (isNumber(value) && inRange(value, minDimension, maxDimension)) {
           return true;
         } else {
           return `Please enter a number between ${minDimension} and ${maxDimension}.`;
@@ -35,7 +35,7 @@ export const promptGameSettings = () =>
       type: "number",
       message: `Enter a height between ${minDimension} and ${maxDimension}`,
       validate: value => {
-        if (isNumber(value) && inRange(value, 1, 26)) {
+        if (isNumber(value) && inRange(value, minDimension, maxDimension)) {
           return true;
         } else {
           return `Please enter a number between ${minDimension} and ${maxDimension}.`;
